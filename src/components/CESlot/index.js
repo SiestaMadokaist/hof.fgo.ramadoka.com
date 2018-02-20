@@ -3,9 +3,10 @@ import React from 'react';
 export default class CESlot extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      rarity: 0
-    };
+  }
+
+  partyMember(){
+    return this.props.partyMember;
   }
 
   rarityName(i){
@@ -13,24 +14,26 @@ export default class CESlot extends React.Component {
   }
 
   rarityLevel(){
-    return this.rarityName(this.state.rarity);
+    return this.rarityName(this.partyMember().ceRarity())
+  }
+
+  ceRarityLevel(){
+    return this.partyMember().ceRarity();
   }
 
   setRarityLevel(e){
-    this.setState({rarity: e.target.value});
+    this.partyMember().setCERarity(e.target.value);
+    this.props.updateState();
   }
 
-  ce(){
-    return this.props.ce;
-  };
-
   render(){
+    const partyMember = this.partyMember();
     return (
       <div className="ceslot-mainframe">
         <div className="ceslot-raritylevel">
           CE Rarity: {this.rarityLevel()}
         </div>
-        <input min='0' max='5' defaultValue='0' type='range' onChange={this.setRarityLevel.bind(this)} />
+        <input min='0' max='5' value={partyMember.ceRarity()} type='range' onChange={this.setRarityLevel.bind(this)} />
       </div>
     )
   }

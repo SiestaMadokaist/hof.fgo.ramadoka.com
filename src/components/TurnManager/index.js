@@ -7,17 +7,18 @@ export default class TurnManager extends React.Component {
   }
 
   manageTurn(e){
-    this.setState({turnCount: e.target.value})
+    const { setTurnCount } = this.props;
+    setTurnCount(e.target.value);
   }
 
   turnCount(){
-    return this.state.turnCount;
+    return this.props.getTurnCount();
   }
 
   render(){
     return (
       <div className='turnmanager-mainframe'>
-        <input type='range' min='0' max='200' defaultValue='0' onChange={this.manageTurn.bind(this)} />
+        <input type='range' min='1' max='50' defaultValue='1' onChange={this.manageTurn.bind(this)} />
         <span className='turnmanager-turnlength'>
           {this.turnCount()} Turn
         </span>

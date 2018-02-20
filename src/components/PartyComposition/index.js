@@ -6,8 +6,12 @@ export default class PartyComposition extends React.Component {
     super(props);
   }
 
-  servants(){
+  partyMembers(){
     return this.props.partyMembers || [];
+  }
+
+  servants(){
+    return this.props.partyMembers.map(pm => pm.servant()) || [];
   }
 
   removeMember(i){
@@ -16,12 +20,12 @@ export default class PartyComposition extends React.Component {
     };
   }
 
-  partyMembers(){
+  partyMemberDOMs(){
     const accumulator = [];
-    const servants = this.servants();
-    for(let i in servants){
-      let servant = servants[i];
-      let dom = <PartyMember servant={servant} key={i} doRemoveMember={this.removeMember.bind(this)(i)}/>
+    const partyMembers = this.partyMembers();
+    for(let i in partyMembers){
+      let partyMember = partyMembers[i];
+      let dom = <PartyMember updateState={this.props.updateState} partyMember={partyMember} key={i} doRemoveMember={this.removeMember.bind(this)(i)}/>
       accumulator.push(dom)
     };
     return accumulator;
@@ -30,7 +34,7 @@ export default class PartyComposition extends React.Component {
   render(){
     return (
       <div className="partycomposition-mainframe">
-        {this.partyMembers()}
+        {this.partyMemberDOMs()}
       </div>
     )
   }

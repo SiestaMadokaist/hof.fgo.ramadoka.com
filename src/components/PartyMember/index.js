@@ -6,11 +6,24 @@ export default class PartyMember extends React.Component {
     super(props);
   }
 
+  partyMember(){
+    return this.props.partyMember;
+  }
+
+  servant(){
+    return this.partyMember().servant();
+  }
+
+  onNPLevelChanged(level){
+    this.partyMember().setNPLevel(level);
+  }
+
   render(){
+    const self = this;
     return (
       <div className="partymember-mainframe">
-        <ServantSlot servant={this.props.servant} onClick={this.props.doRemoveMember}/>
-        <CESlot />
+        <ServantSlot partyMember={this.partyMember()} doRemoveMember={this.props.doRemoveMember} updateState={this.props.updateState}/>
+        <CESlot partyMember={this.partyMember()} updateState={this.props.updateState}/>
       </div>
     )
   }

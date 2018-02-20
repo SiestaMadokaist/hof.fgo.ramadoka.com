@@ -4,13 +4,14 @@ export default class ServantSlot extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      npLevel: 1,
-    };
+  }
+
+  partyMember(){
+    return this.props.partyMember;
   }
 
   servant(){
-    return this.props.servant || {};
+    return this.partyMember().servant() || {};
   }
 
   servantId(){
@@ -18,7 +19,6 @@ export default class ServantSlot extends React.Component {
   }
 
   servantImageURL(){
-    console.log(this.servantId());
     return `${IMAGE_HOST}/assets/servants.thumbnail/${this.servantId()}.png`;
   }
 
@@ -29,14 +29,9 @@ export default class ServantSlot extends React.Component {
   }
 
   setNPLevel(e){
-    this.setState({
-      npLevel: e.target.value
-    });
-  }
-
-  close(e){
-    const servantId = this.servantId();
-    this.setState({ servantId: servantId ^ 1 });
+    const npLevel = e.target.value;
+    this.partyMember().setNPLevel(npLevel);
+    this.props.updateState();
   }
 
   hasServant(){
@@ -45,11 +40,11 @@ export default class ServantSlot extends React.Component {
   }
 
   removeMember(e){
-    console.log(this.props);
-    this.props.onClick(this.props.key);
+    this.props.doRemoveMember(this.props.key);
   }
 
   render(){
+    const partyMember = this.partyMember();
     return (
       <div className='servantslot-mainframe'>
         <div className="servantslot-closebutton" onClick={this.removeMember.bind(this)}>
@@ -58,9 +53,9 @@ export default class ServantSlot extends React.Component {
         <img src={this.servantImageURL()} />
         <div className='servantslot-nplevel'>
           <span>
-            NP: {this.state.npLevel}
+            NP: {partyMember.npLevel()}
           </span>
-          <input min='1' max='5' defaultValue='1' type="range" onChange={this.setNPLevel.bind(this)}/>
+          <input min='1' max='5' type="range" onChange={this.setNPLevel.bind(this)} value={partyMember.npLevel()}/>
         </div>
       </div>
     )
