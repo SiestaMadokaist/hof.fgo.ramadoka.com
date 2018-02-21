@@ -1,8 +1,7 @@
-import EventEmitter from 'events';
 export default class MPartyMember {
   constructor({ servant }){
     this.props = { servant };
-    this.state = { npLevel: 1, ceRarity: 0 }
+    this.state = { npLevel: 1, ceRarity: 0, ceEventBuff: 0 };
   }
 
   npLevel(){
@@ -64,10 +63,6 @@ export default class MPartyMember {
     if(this.ceRarity() === 5){ return 12; }
   }
 
-  overCost(){
-    //TODO;
-  }
-
   supportTier(){
     return this.servant().support_tier;
   }
@@ -83,7 +78,23 @@ export default class MPartyMember {
   }
 
   totalCost(){
-    return this.servantCost() + this.excessCost() + this.ceCost() + this.overCost();
+    return this.servantCost() + this.excessCost() + this.ceCost() + this.eventBuffCECost() + this.overCost();
+  }
+
+  eventBuffCECost(){
+    return this.ceEventBuffMultiplier() * this.ceCost();
+  }
+
+  ceEventBuffMultiplier(){
+    return this.state.ceEventBuff * 0.5;
+  }
+
+  ceEventBuffMultiplierPercentage(){
+    return this.ceEventBuffMultiplier() * 100;
+  }
+
+  ceEventBuff(){
+    return this.state.ceEventBuff;
   }
 
   ceRarity(){
@@ -101,4 +112,9 @@ export default class MPartyMember {
   setCERarity(rarity){
     this.state.ceRarity = parseInt(rarity);
   }
+
+  setCEEventBuff(buffLevel){
+    this.state.ceEventBuff = parseInt(buffLevel) ;
+  }
+
 }

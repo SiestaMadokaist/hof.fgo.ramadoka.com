@@ -26,14 +26,31 @@ export default class CESlot extends React.Component {
     this.props.updateState();
   }
 
+  setCEEventBuff(e){
+    this.partyMember().setCEEventBuff(e.target.value);
+    this.props.updateState();
+  }
+
+  ceEventBuffMultiplierPercentage(){
+    return this.partyMember().ceEventBuffMultiplierPercentage();
+  }
+
   render(){
     const partyMember = this.partyMember();
     return (
       <div className="ceslot-mainframe">
-        <div className="ceslot-raritylevel">
-          CE Rarity: {this.rarityLevel()}
+        <div className="ceslot-raritylevel circled-border">
+          <div className="ceslot-text-legend">
+            CE Rarity: {this.rarityLevel()}
+          </div>
+          <input min='0' max='5' value={partyMember.ceRarity()} type='range' onChange={this.setRarityLevel.bind(this)} className="ceslot-slider" />
         </div>
-        <input min='0' max='5' value={partyMember.ceRarity()} type='range' onChange={this.setRarityLevel.bind(this)} />
+        <div className="ceslot-eventbuff circled-border">
+          <div className="ceslot-text-legend">
+            Event CE Buff: {this.ceEventBuffMultiplierPercentage()}%
+          </div>
+          <input min='0' max='4' value={partyMember.ceEventBuff()} type='range' onChange={this.setCEEventBuff.bind(this)} className="ceslot-slider"/>
+        </div>
       </div>
     )
   }

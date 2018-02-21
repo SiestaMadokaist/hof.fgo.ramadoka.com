@@ -14,7 +14,9 @@ const App = () => (
   <Router>
     <div>
       <nav>
+        <Link to="/">Home</Link>
         <Link to="/HoFCalculator/">HoFCalculator</Link>
+        <Link to="/HoF">Hall of Fame (WIP)</Link>
       </nav>
       <div className="content">
         <Switch>

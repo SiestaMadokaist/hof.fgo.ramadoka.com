@@ -6,7 +6,7 @@ const __memo__ = {}
 export default class ServantSelector extends React.Component {
   static async getServants(){
     if(__memo__.servants === undefined){
-      const { data } = await axios.get(`${API_HOST}/servants`);
+      const { data } = await axios.get(`${API_HOST}/servants.json`);
       __memo__.servants = data;
       return __memo__.servants;
     } else {
@@ -44,7 +44,9 @@ export default class ServantSelector extends React.Component {
     const { filter, servants } = this.state;
     if(filter === ''){ return servants;  }
     if(filter === undefined){ return servants; }
-    return servants.filter(s => s.name.toLowerCase().match(filter.toLowerCase()));
+    return servants.filter(s => {
+      return s.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+    });
   }
 
   servantPickers(){

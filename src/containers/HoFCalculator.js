@@ -3,8 +3,10 @@ import ServantSelector from 'components/ServantSelector';
 import PartyComposition from 'components/PartyComposition';
 import TurnManager from 'components/TurnManager';
 import CalculationResult from 'components/CalculationResult';
+import {Helmet} from 'react-helmet';
 
 import MPartyMember from 'models/PartyMember';
+import MediaQuery from 'react-responsive';
 
 export default class HoFCalculator extends React.Component {
   constructor(props){
@@ -52,18 +54,57 @@ export default class HoFCalculator extends React.Component {
     return this.state.turnCount;
   }
 
-  render(){
+  desktopView(){
     const { partyMembers } = this.state;
     return (
       <div>
+        <Helmet>
+          <title>HoF Calculator</title>
+        </Helmet>
         <PartyComposition partyMembers={partyMembers} doRemoveMember={this.removeMember.bind(this)} updateState={this.updateState.bind(this)}/>
-        <div className='hofc-leftside-mainframe'>
-          <ServantSelector onSelectServant={this.addMembers.bind(this)}/>
+        <div className='hofc-bottom-mainframe'>
+          <div className='hofc-leftside-mainframe'>
+            <ServantSelector onSelectServant={this.addMembers.bind(this)}/>
+          </div>
+          <div className='hofc-rightside-mainframe'>
+            <TurnManager setTurnCount={this.setTurnCount.bind(this)} getTurnCount={this.getTurnCount.bind(this)}/>
+            <CalculationResult partyMembers={partyMembers} getTurnCount={this.getTurnCount.bind(this)} />
+          </div>
         </div>
-        <div className='hofc-rightside-mainframe'>
-          <TurnManager setTurnCount={this.setTurnCount.bind(this)} getTurnCount={this.getTurnCount.bind(this)}/>
-          <CalculationResult partyMembers={partyMembers} getTurnCount={this.getTurnCount.bind(this)} />
+      </div>
+    )
+  }
+
+  mobileView(){
+    const { partyMembers } = this.state;
+    return (
+      <div>
+        <Helmet>
+          <title>HoF Calculator</title>
+        </Helmet>
+        <PartyComposition partyMembers={partyMembers} doRemoveMember={this.removeMember.bind(this)} updateState={this.updateState.bind(this)}/>
+        <div className='hofc-bottom-mainframe'>
+          <div className='hofc-part2-mainframe'>
+            <TurnManager setTurnCount={this.setTurnCount.bind(this)} getTurnCount={this.getTurnCount.bind(this)}/>
+            <CalculationResult partyMembers={partyMembers} getTurnCount={this.getTurnCount.bind(this)} />
+          </div>
+          <div className='hofc-part3-mainframe'>
+            <ServantSelector onSelectServant={this.addMembers.bind(this)}/>
+          </div>
         </div>
+      </div>
+    )
+  }
+
+  render(){
+    return (
+      <div>
+        <MediaQuery query='(min-device-width: 1024px)'>
+          {this.desktopView()}
+        </MediaQuery>
+        <MediaQuery query='(max-device-width: 1024px)'>
+          {this.mobileView()}
+        </MediaQuery>
       </div>
     )
   }

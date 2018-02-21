@@ -25,7 +25,8 @@ export default class CalculationResult extends React.Component {
   }
 
   fightIndex(){
-    return this.totalPartyCost() * this.turnCountMultiplier();
+    const floatPoint = this.totalPartyCost() * this.turnCountMultiplier();
+    return floatPoint.toFixed(4);
   }
 
   render(){

@@ -47,15 +47,12 @@ export default class ServantSlot extends React.Component {
     const partyMember = this.partyMember();
     return (
       <div className='servantslot-mainframe'>
-        <div className="servantslot-closebutton" onClick={this.removeMember.bind(this)}>
-          X
-        </div>
-        <img src={this.servantImageURL()} />
+        <img src={this.servantImageURL()} onClick={this.removeMember.bind(this)}/>
         <div className='servantslot-nplevel'>
-          <span>
+          <span className='servantslot-nplevel-legend'>
             NP: {partyMember.npLevel()}
           </span>
-          <input min='1' max='5' type="range" onChange={this.setNPLevel.bind(this)} value={partyMember.npLevel()}/>
+          <input min='1' max='5' type="range" onChange={this.setNPLevel.bind(this)} value={partyMember.npLevel()} className='servantslot-nplevel-modifier'/>
         </div>
       </div>
     )

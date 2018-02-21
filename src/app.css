@@ -42,15 +42,30 @@ nav a {
 
 .partycomposition-mainframe {
   margin: auto;
-  height: 250px;
+  min-height: 300px;
+  width: 100%;
+  display: table;
 }
 
 .partymember-mainframe {
   float: left;
   margin: 3px;
   margin-bottom: 10px;
-  width: 16%;
+  display: table-row;
 }
+
+@media screen and (max-width: 1024px) {
+  .partymember-mainframe {
+    width: 31%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .partymember-mainframe {
+    width: 16%;
+  }
+}
+
 
 .servantslot-closebutton {
   float: right;
@@ -82,7 +97,6 @@ nav a {
 }
 
 .ceslot-mainframe {
-  background: burlywood;
 }
 
 .ceslot-mainframe input[type='range'] {
@@ -91,23 +105,44 @@ nav a {
 
 .ceslot-raritylevel {
   font-size: 1.1em;
+  background: floralwhite;
   font-weight: bold;
-  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 5px;
 }
 
-.servantslot-nplevel span{
+.ceslot-text-legend {
+  margin-left: 5px;
+}
+
+.circled-border {
+  border-radius: 5px;
+}
+
+.ceslot-slider {
+  margin-left: 5px;
+}
+
+.ceslot-eventbuff {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 5px;
+  background: floralwhite;
+  margin-left: 5px;
+}
+
+.servantslot-nplevel-legend {
   float: left;
-  width: 40%;
+  width: 35%;
   color: yellow;
   font-size: 1.2em;
   font-weight: bold;
 }
 
-.servantslot-nplevel input {
+.servantslot-nplevel-modifier {
   float: left;
-  width: 50%;
-  font-size: large;
+  width: 55%;
+  height: 20px;
   display: block;
 }
 
@@ -115,8 +150,8 @@ nav a {
   float: left;
   width: 75px;
   height: 75px;
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
   background: white;
 }
 
@@ -129,10 +164,10 @@ nav a {
 }
 
 .servantselector-picker {
-  margin-top: 20px;
   width: 100%;
   overflow-y: scroll;
   height: 320px;
+  margin-top: 10px;
 }
 
 .turnmanager-mainframe > input {
@@ -146,11 +181,21 @@ nav a {
   font-size: x-large;
 }
 
+.hofc-bottom-mainframe {
+  display: block;
+  width: 100%;
+}
+
 .hofc-leftside-mainframe {
   width: 55%;
   float: left;
   margin-right: 10px;
   height: 380px;
+}
+
+.hofc-part2-mainframe {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .hofc-rightside-mainframe {
@@ -163,4 +208,5 @@ nav a {
   text-align: center;
   background: aqua;
   font-size: x-large;
+  margin-top: 10px;
 }
