@@ -9,6 +9,9 @@ import HoFCalculator from 'containers/HoFCalculator'
 import NotFound from 'containers/404'
 
 import './app.css'
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-114512619-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const App = () => (
   <Router>
