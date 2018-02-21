@@ -32,7 +32,9 @@ export default class CalculationResult extends React.Component {
   render(){
     return (
       <div className='calc-result-mainframe'>
-        Your Fight Index: {this.fightIndex()}
+        <div>
+          Your Fight Index: {this.fightIndex()}
+        </div>
       </div>
     )
   }
