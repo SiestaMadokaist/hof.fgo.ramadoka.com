@@ -6,6 +6,12 @@ import App from './App'
 
 // Export your top level component as JSX (for static rendering)
 export default App
+import ReactGA from 'react-ga';
+
+if(typeof window !== 'undefined'){
+  ReactGA.initialize('UA-114512619-1');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 // Render your app
 if (typeof document !== 'undefined') {
