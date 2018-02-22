@@ -64,8 +64,8 @@ export default class ServantSelector extends React.Component {
 
   servantFilter(){
     return (
-      <div>
-        <input type="text" onChange={this.setFilter.bind(this)} style={{fontSize: 'x-large', width: '98%'}} placeholder='Filter Servant By Name' />
+      <div className='servantselector-filter'>
+        <input type="text" onChange={this.setFilter.bind(this)} placeholder='Filter Servant By Name' />
       </div>
     )
   }

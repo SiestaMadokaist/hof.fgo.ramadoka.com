@@ -1,5 +1,4 @@
 html {
-  background: black;
   height: 100%;
 }
 
@@ -11,8 +10,15 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: black;
+}
+
+#root {
   background: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px);
   background-size: 8px 8px;
+  display: table;
+  height: 100%;
+  width: 100%;
 }
 
 a {
@@ -36,33 +42,52 @@ nav a {
   display: inline-block;
 }
 
+input[type=range]::-moz-range-track {
+    background: #bbb;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    background: #669;
+}
+
+
 .content {
   padding: 1rem;
 }
 
 .partycomposition-mainframe {
-  margin: auto;
-  min-height: 300px;
+  height: 320px;
   width: 100%;
   display: table;
 }
 
-.partymember-mainframe {
-  float: left;
-  margin: 3px;
-  margin-bottom: 10px;
-  display: table-row;
+.partycomposition-wrapper {
+  width: 100%;
+  height: 96%;
+  background: mediumslateblue;
+  display: table;
+  border-radius: 10px;
 }
 
-@media screen and (max-width: 1024px) {
+.partymember-mainframe {
+  float: left;
+  display: table-row;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+@media screen and (max-width: 1150px) {
   .partymember-mainframe {
     width: 31%;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1150px) {
   .partymember-mainframe {
-    width: 16%;
+    width: 16.14%;
+    margin-left: 0.25%;
+    margin-right: 0.25%;
   }
 }
 
@@ -108,11 +133,11 @@ nav a {
   background: floralwhite;
   font-weight: bold;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin-left: 2%;
 }
 
 .ceslot-text-legend {
-  margin-left: 5px;
+  margin-left: 2%;
 }
 
 .circled-border {
@@ -126,9 +151,9 @@ nav a {
 .ceslot-eventbuff {
   font-size: 1.1em;
   font-weight: bold;
-  margin-top: 5px;
   background: floralwhite;
   margin-left: 5px;
+  margin-bottom: 5px;
 }
 
 .servantslot-nplevel-legend {
@@ -146,13 +171,54 @@ nav a {
   display: block;
 }
 
+@media screen and (max-width: 500px) {
+  .hofc-bottom-mainframe-mobile  .servantpicker-mainframe {
+    width: 18%;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 725px) {
+  .hofc-bottom-mainframe-mobile  .servantpicker-mainframe {
+    width: 14.66%;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+}
+
+@media screen and (min-width: 725px) and (max-width: 1000px){
+  .hofc-bottom-mainframe-mobile  .servantpicker-mainframe {
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    width: 11.5%;
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1150px){
+  .hofc-bottom-mainframe-mobile  .servantpicker-mainframe {
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    width: 9%;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .hofc-bottom-mainframe-mobile  .servantpicker-mainframe {
+    width: 7.3%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+  }
+}
+
+.hofc-bottom-mainframe-desktop .servantpicker-mainframe {
+  width: 11.5%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+
 .servantpicker-mainframe {
   float: left;
-  width: 75px;
-  height: 75px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  background: white;
 }
 
 .servantpicker-mainframe img {
@@ -163,9 +229,21 @@ nav a {
   width: 100%;
 }
 
-@media screen and (min-width: 1024px) {
+.servantselector-filter input {
+  width: 100%;
+  font-size: x-large;
+  border-radius: 7px;
+}
+
+@media screen and (min-width: 1150px) {
   .servantselector-picker {
     height: 320px;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .servantselector-picker {
+    height: 600px;
   }
 }
 
@@ -175,9 +253,15 @@ nav a {
   margin-top: 10px;
 }
 
+.turnmanager-mainframe {
+  padding: 3px;
+}
+
 .turnmanager-mainframe > input {
   width: 75%;
-  margin: 10px;
+  margin-left: 2.5%;
+  margin-top: 10px;
+  margin-right: 2.5%;
 }
 
 .turnmanager-turnlength {
@@ -211,7 +295,15 @@ nav a {
 
 .calc-result-mainframe {
   text-align: center;
-  background: aqua;
-  font-size: x-large;
   margin-top: 10px;
+  display: block;
+  width: 100%;
 }
+
+.calc-result-wrapper {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  color: cornsilk;
+}
+

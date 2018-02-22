@@ -34,7 +34,9 @@ export default class PartyComposition extends React.Component {
   render(){
     return (
       <div className="partycomposition-mainframe">
-        {this.partyMemberDOMs()}
+        <div className='partycomposition-wrapper'>
+          {this.partyMemberDOMs()}
+        </div>
       </div>
     )
   }

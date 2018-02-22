@@ -117,4 +117,9 @@ export default class MPartyMember {
     this.state.ceEventBuff = parseInt(buffLevel) ;
   }
 
+  toJson(){
+    const { ceRarity, ceEventBuff, npLevel } = this.state;
+    const { servant } = this.props;
+    return { servant, ceRarity, ceEventBuff, npLevel };
+  }
 }

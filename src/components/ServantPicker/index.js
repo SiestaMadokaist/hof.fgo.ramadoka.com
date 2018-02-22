@@ -36,9 +36,6 @@ export default class ServantPicker extends React.Component {
     return (
       <div className="servantpicker-mainframe" onClick={this.onClick.bind(this)}>
         <img src={this.servantImageURL()} title={this.servantName()}/>
-        <div className="servantpicker-detail">
-          {this.servantName()}:{this.servantId()}
-        </div>
       </div>
     )
   }

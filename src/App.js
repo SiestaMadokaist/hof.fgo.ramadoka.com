@@ -8,8 +8,13 @@ import Blog from 'containers/Blog'
 import HoFCalculator from 'containers/HoFCalculator'
 import NotFound from 'containers/404'
 
-import './app.css'
-import root from 'window-or-global';
+new Promise((resolve, reject) => {
+  require('../static/bootstrap.min.css');
+  require('./app.css');
+  resolve()
+});
+
+import root from 'window-or-global'
 
 const App = () => (
   <Router>

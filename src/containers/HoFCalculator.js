@@ -11,7 +11,7 @@ import MediaQuery from 'react-responsive';
 export default class HoFCalculator extends React.Component {
   constructor(props){
     super(props);
-    this.state = { partyMembers: [], lastUpdate: 0, turnCount: 1 }
+    this.state = { partyMembers: [], lastUpdate: 0, turnCount: 1, height: window.innerHeight, width: window.innerWidth}
   }
 
   addMembers(servant){
@@ -25,6 +25,10 @@ export default class HoFCalculator extends React.Component {
 
   updateState(){
     this.setState({ lastUpdate: Date.now() });
+  }
+
+  componentWillMount(){
+    window.addEventListener('resize', () => { this.setState({ width: window.innerWidth, height: window.innerHeight })});
   }
 
   removeMember(removedNumber){
@@ -62,7 +66,7 @@ export default class HoFCalculator extends React.Component {
           <title>HoF Calculator</title>
         </Helmet>
         <PartyComposition partyMembers={partyMembers} doRemoveMember={this.removeMember.bind(this)} updateState={this.updateState.bind(this)}/>
-        <div className='hofc-bottom-mainframe'>
+        <div className='hofc-bottom-mainframe-desktop'>
           <div className='hofc-leftside-mainframe'>
             <ServantSelector onSelectServant={this.addMembers.bind(this)}/>
           </div>
@@ -83,7 +87,7 @@ export default class HoFCalculator extends React.Component {
           <title>HoF Calculator</title>
         </Helmet>
         <PartyComposition partyMembers={partyMembers} doRemoveMember={this.removeMember.bind(this)} updateState={this.updateState.bind(this)}/>
-        <div className='hofc-bottom-mainframe'>
+        <div className='hofc-bottom-mainframe-mobile'>
           <div className='hofc-part2-mainframe'>
             <TurnManager setTurnCount={this.setTurnCount.bind(this)} getTurnCount={this.getTurnCount.bind(this)}/>
             <CalculationResult partyMembers={partyMembers} getTurnCount={this.getTurnCount.bind(this)} />
@@ -96,15 +100,16 @@ export default class HoFCalculator extends React.Component {
     )
   }
 
+  selectedView(){
+    const { width } = this.state;
+    if(width < 1024){ return this.mobileView(); }
+    else { return this.desktopView(); }
+  }
+
   render(){
     return (
       <div>
-        <MediaQuery query='(min-device-width: 1024px)'>
-          {this.desktopView()}
-        </MediaQuery>
-        <MediaQuery query='(max-device-width: 1024px)'>
-          {this.mobileView()}
-        </MediaQuery>
+        {this.selectedView()}
       </div>
     )
   }
