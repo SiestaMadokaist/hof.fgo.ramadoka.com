@@ -29,7 +29,7 @@ export default class MPartyMember {
   }
 
   isMashu(){
-    return this.servant().id = 1;
+    return this.servant().id == 1;
   }
 
   excessCostMultiplier(){
