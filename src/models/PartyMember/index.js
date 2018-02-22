@@ -85,6 +85,17 @@ export default class MPartyMember {
     return this.ceEventBuffMultiplier() * this.ceCost();
   }
 
+  costBreakDown(){
+    return {
+      servantCost: this.servantCost(),
+      excessCost: this.excessCost(),
+      ceCost: this.ceCost(),
+      overCost: this.overCost(),
+      eventBuffCECost: this.eventBuffCECost(),
+      totalCost: this.totalCost(),
+    };
+  }
+
   ceEventBuffMultiplier(){
     return this.state.ceEventBuff * 0.5;
   }
