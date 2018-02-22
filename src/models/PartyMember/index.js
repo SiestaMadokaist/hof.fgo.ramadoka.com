@@ -28,7 +28,12 @@ export default class MPartyMember {
     return this.servant().star === 5;
   }
 
+  isMashu(){
+    return this.servant().id = 1;
+  }
+
   excessCostMultiplier(){
+    if(this.isMashu()){ return 2; }
     if(this.isWelfare()){ return 2; }
     if(this.isSRServant() && this.isNonDamagingNp()){ return 2; }
     if(this.isSRServant() && this.isDamagingNp()){ return 3;}
@@ -38,7 +43,7 @@ export default class MPartyMember {
   }
 
   excessCost(){
-    if(this.servant().star <= 3){ return 0; }
+    if(this.servant().star <= 3 && !(this.isMashu())){ return 0; }
     return Math.sqrt(this.npLevel() - 1) * this.excessCostMultiplier();
   }
 

@@ -13,4 +13,4 @@ const configProd = {
   IMAGE_HOST: 'https://fgo.ramadoka.com'
 }
 
-module.exports = configDevHome;
+module.exports = configProd;
