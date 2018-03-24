@@ -23,6 +23,7 @@ const App = () => (
         <Link to="/">Home</Link>
         <Link to="/HoFCalculator/">HoFCalculator</Link>
         <Link to="/HoF">Hall of Fame (WIP)</Link>
+        <Link to='/Versions'>Version: 2018-03-24T13:59:04.541Z</Link>
       </nav>
       <div className="content">
         <Switch>
