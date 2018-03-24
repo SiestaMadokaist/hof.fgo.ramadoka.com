@@ -49,7 +49,7 @@ export default class CESlot extends React.Component {
           <div className="ceslot-text-legend">
             Damage Buff: {this.ceEventBuffMultiplierPercentage()}%
           </div>
-          <input min='0' max='10' value={partyMember.ceEventBuff()} type='range' onChange={this.setCEEventBuff.bind(this)} className="ceslot-slider"/>
+          <input min='0' max='14' value={partyMember.ceEventBuff()} type='range' onChange={this.setCEEventBuff.bind(this)} className="ceslot-slider"/>
         </div>
       </div>
     )
