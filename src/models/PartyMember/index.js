@@ -4,6 +4,10 @@ export default class MPartyMember {
     this.state = { npLevel: 1, ceRarity: 0, ceEventBuff: 0 };
   }
 
+  servantId(){
+    return this.servant().id;
+  }
+
   npLevel(){
     return this.state.npLevel;
   }
@@ -83,11 +87,20 @@ export default class MPartyMember {
   }
 
   totalCost(){
-    return this.servantCost() + this.excessCost() + this.ceCost() + this.eventBuffCECost() + this.overCost();
+    return this.servantCost() + this.excessCost() + this.ceCost() + this.eventBuffCECost() + this.overCost() + this.specialCost();
+  }
+
+  specialCost(){
+    // TODO: change from servants.json
+    if(this.servantId() === 87){ return 32; } //waver
+    if(this.servantId() === 105){ return 24; } //merlin
+    return 0;
   }
 
   eventBuffCECost(){
-    return this.ceEventBuffMultiplier() * this.ceCost();
+    // TODO: uh... hardcoded 12 because reason.
+    return this.ceEventBuffMultiplier() * 12;
+    // return this.ceEventBuffMultiplier() * this.ceCost();
   }
 
   costBreakDown(){
