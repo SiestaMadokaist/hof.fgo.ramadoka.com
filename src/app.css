@@ -52,6 +52,18 @@ input[type=range]::-moz-range-thumb {
 }
 
 
+.user-login-nav {
+  padding: 1rem;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  float: right;
+}
+
+.user-login-nav-username {
+  color: yellow;
+}
+
 .content {
   padding: 1rem;
 }

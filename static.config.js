@@ -25,8 +25,9 @@ export default {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" content="FGO, mobile game, hall of fame, Fate, Fate/Grand Order" />
-        <meta name="description" content="Just how low can you go to finish the CQ?" />
+        <meta name="description" content="Are you esport enough to play FGO" />
         <meta property="og:site_name" content="fgo.ramadoka.com" />
+        <meta property="og:description" content="Are you esport enough to play FGO" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://fgo.ramadoka.com" />
         <meta property="og:title" content="Hall of Fame for Fate/Grand Order" />
@@ -35,6 +36,8 @@ export default {
         <meta property="og:image:height" content="1122" />
         <meta property="fb:pages" content="496806567045945" />
         <meta property="fb:app_id" content="738879266276384" />
+
+
       </Head>
       <Body>{children}</Body>
     </Html>

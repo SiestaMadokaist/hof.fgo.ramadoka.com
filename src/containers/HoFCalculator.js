@@ -6,7 +6,7 @@ import CalculationResult from 'components/CalculationResult';
 import {Helmet} from 'react-helmet';
 
 import MPartyMember from 'models/PartyMember';
-import MediaQuery from 'react-responsive';
+const ImageUploader = () => (<div></div>);
 
 export default class HoFCalculator extends React.Component {
   constructor(props){
@@ -73,6 +73,7 @@ export default class HoFCalculator extends React.Component {
           <div className='hofc-rightside-mainframe'>
             <TurnManager setTurnCount={this.setTurnCount.bind(this)} getTurnCount={this.getTurnCount.bind(this)}/>
             <CalculationResult partyMembers={partyMembers} getTurnCount={this.getTurnCount.bind(this)} />
+            <ImageUploader />
           </div>
         </div>
       </div>
