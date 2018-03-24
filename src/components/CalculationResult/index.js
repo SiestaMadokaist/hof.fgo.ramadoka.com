@@ -21,7 +21,7 @@ export default class CalculationResult extends React.Component {
   }
 
   turnCountMultiplier(){
-    return 1 - Math.exp(-this.turnCount() / 5);
+    return 1 - Math.exp(-this.turnCount() / 7);
   }
 
   fightIndex(){
