@@ -25,7 +25,7 @@ export default {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" content="FGO, mobile game, hall of fame, Fate, Fate/Grand Order" />
-        <meta name="description" content="Just how low can you go to finish the CQ?" />
+        <meta name="description" content="We, esport FGO now" />
         <meta property="og:site_name" content="fgo.ramadoka.com" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://fgo.ramadoka.com" />
